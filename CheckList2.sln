@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckList2", "CheckList2\CheckList2.csproj", "{92F895A7-8FA9-464F-83E5-82A16DA4DA8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{D2D2DF94-9686-457F-8A2A-CFBD5356DB3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreDAL", "EFCoreDAL\EFCoreDAL.csproj", "{A6F10A20-5D22-4792-851A-38EBCA9CEF97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92F895A7-8FA9-464F-83E5-82A16DA4DA8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92F895A7-8FA9-464F-83E5-82A16DA4DA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92F895A7-8FA9-464F-83E5-82A16DA4DA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92F895A7-8FA9-464F-83E5-82A16DA4DA8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2D2DF94-9686-457F-8A2A-CFBD5356DB3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2D2DF94-9686-457F-8A2A-CFBD5356DB3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2D2DF94-9686-457F-8A2A-CFBD5356DB3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2D2DF94-9686-457F-8A2A-CFBD5356DB3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6F10A20-5D22-4792-851A-38EBCA9CEF97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6F10A20-5D22-4792-851A-38EBCA9CEF97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6F10A20-5D22-4792-851A-38EBCA9CEF97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6F10A20-5D22-4792-851A-38EBCA9CEF97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E015A64-FFC2-495A-8B58-055925A2B17E}
+	EndGlobalSection
+EndGlobal
