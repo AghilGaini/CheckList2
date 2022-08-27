@@ -3,6 +3,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<script type="text/javascript">
+
+    function Test()
+        {
+            swal({
+                  title: "آیا از انجام عملیات اطمینان دارید؟",
+                  text: "بعد از انجام عملیات رکورد پاک شده قابل بازیابی نمیباشد",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                })
+                .then((willDelete) => {
+                  if (willDelete) {
+                    swal("عملیات با موفقیت انجام شد", {
+                      icon: "success",
+                    });
+                  } else {
+                    swal("عملیات لغو شد");
+                  }
+                });
+        }
+
+</script>
+
+
 <table class="table table-dark">
     <thead>
         <tr>
@@ -35,3 +61,6 @@
         }
     </tbody>
 </table>
+
+<input type="button" value="TestSweetAlert" onclick="Test()" />
+
