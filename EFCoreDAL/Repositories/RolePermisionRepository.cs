@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Domain.DTO.Security;
+using Domain.Entities;
 using Domain.Interfaces;
 using EFCoreDAL.Context;
 using Microsoft.EntityFrameworkCore;
@@ -19,9 +20,50 @@ namespace EFCoreDAL.Repositories
             _context = context;
         }
 
+        public async Task<bool> DeletePermisionsByRoleIdAsync(long roleId)
+        {
+            try
+            {
+                var rolePermisions = await _context.RolePermisions.Where(r => r.RoleId == roleId).ToListAsync();
+                _context.RolePermisions.RemoveRange(rolePermisions);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
         public async Task<IEnumerable<long>> GetAllPermisionsIdByRoleIDAsync(long roleId)
         {
             return await _context.RolePermisions.Where(r => r.RoleId == roleId).Select(r => r.PermisionId).ToListAsync();
+        }
+
+        public async Task<bool> InsertRolePermisionDTOAsync(PermisionDTO model)
+        {
+            try
+            {
+                var newRolePermisions = new List<RolePermisionDomain>();
+
+                foreach (var item in model.Permisions)
+                {
+                    newRolePermisions.Add(new RolePermisionDomain()
+                    {
+                        RoleId = model.RoleId,
+                        PermisionId = item.Id
+                    });
+                }
+                await _context.RolePermisions.AddRangeAsync(newRolePermisions);
+
+                return true;
+
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -61,8 +61,35 @@ namespace CheckList2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Permisions(PermisionDTO model)
+        public async Task<IActionResult> Permisions(PermisionDTO model)
         {
+            var role = await _context._role.GetByIdAsync(model.RoleId);
+            if (role == null)
+            {
+                ModelState.AddModelError("", "نقشی پیدا نشد");
+                return View(model);
+            }
+
+            if (await _context._rolePermision.DeletePermisionsByRoleIdAsync(model.RoleId))
+            {
+                var newRolePermisions = new PermisionDTO();
+                foreach (var item in model.Permisions)
+                {
+                    if (item.IsSelected)
+                        newRolePermisions.Permisions.Add(item);
+                }
+                newRolePermisions.RoleId = model.RoleId;
+
+                if (await _context._rolePermision.InsertRolePermisionDTOAsync(newRolePermisions))
+                {
+                    _context.Complete();
+                    return RedirectToAction("Roles", "Security");
+                }
+
+
+            }
+
+
             return RedirectToAction("index", "home");
         }
 
