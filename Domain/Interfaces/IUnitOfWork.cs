@@ -10,6 +10,11 @@ namespace Domain.Interfaces
     {
         public IPersonDomain _person { get; set; }
         public IUserDomain _user { get; set; }
+        public IRoleDomain _role { get; set; }
+        public IPermisionDomain _permision { get; set; }
+        public IUserRoleDomain _userRole { get; set; }
+        public IRolePermisionDomain _rolePermision { get; set; }
+
         void Complete();
     }
 }
