@@ -9,6 +9,7 @@ namespace Domain.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         public IPersonDomain _person { get; set; }
+        public IUserDomain _user { get; set; }
         void Complete();
     }
 }

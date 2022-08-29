@@ -15,6 +15,7 @@ namespace EFCoreDAL.Context
 
         }
         public DbSet<PersonDomain> People { get; set; }
+        public DbSet<UserDomain> Users { get; set; }
 
     }
 }

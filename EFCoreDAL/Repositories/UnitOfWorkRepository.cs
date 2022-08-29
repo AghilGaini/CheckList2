@@ -13,11 +13,13 @@ namespace EFCoreDAL.Repositories
         private readonly ApplicationContext _context;
 
         public IPersonDomain _person { get; set; }
+        public IUserDomain _user { get; set; }
 
         public UnitOfWorkRepository(ApplicationContext context)
         {
             _context = context;
             _person = new PersonRepository(context);
+            _user = new UserRepository(context);
         }
 
         public void Complete()
