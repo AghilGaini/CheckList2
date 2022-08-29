@@ -2,6 +2,7 @@
 using Domain.Interfaces;
 using Domain.Model;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CheckList2.Controllers
@@ -29,5 +30,42 @@ namespace CheckList2.Controllers
 
             return View(rolesInfo);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Permisions(long Id)
+        {
+            var res = new PermisionDTO();
+
+            res.Permisions.AddRange(await _context._permision.GetAllDTOAsync());
+            res.RoleId = Id;
+
+            var role = await _context._role.GetByIdAsync(Id);
+            if (role == null)
+            {
+                ModelState.AddModelError("", "نقشی پیدا نشد");
+                return View(res);
+            }
+
+            var rolePermisionsId = await _context._rolePermision.GetAllPermisionsIdByRoleIDAsync(Id);
+
+            foreach (var item in res.Permisions)
+            {
+                if (rolePermisionsId.Any(r => r == item.Id))
+                    item.IsSelected = true;
+            }
+
+            ViewBag.RoleTitle = role.Title;
+
+
+            return View(res);
+        }
+
+        [HttpPost]
+        public IActionResult Permisions(PermisionDTO model)
+        {
+            return RedirectToAction("index", "home");
+        }
+
+
     }
 }

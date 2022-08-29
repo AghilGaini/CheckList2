@@ -9,5 +9,7 @@ namespace Domain.Interfaces
 {
     public interface IRolePermisionDomain : IGenericDomain<RolePermisionDomain>
     {
+        Task<IEnumerable<long>> GetAllPermisionsIdByRoleIDAsync(long roleId);
+
     }
 }
