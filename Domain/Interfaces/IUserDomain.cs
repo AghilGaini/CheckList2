@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Domain.DTO.Security;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace Domain.Interfaces
     public interface IUserDomain : IGenericDomain<UserDomain>
     {
         Task<UserDomain> GetByUsernameAsync(string username);
+
+        Task<IEnumerable<UserInfoDTO>> GetAllDTOAsync();
 
     }
 }

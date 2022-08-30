@@ -17,6 +17,22 @@ namespace CheckList2.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Users()
+        {
+            var usersInfo = new UserDTO();
+
+            usersInfo.Users.AddRange(await _context._user.GetAllDTOAsync());
+
+
+            usersInfo.Actions.Add(new ActionItem() { Title = "ویرایش", Action = "EditRole", Controller = "Security" });
+            usersInfo.Actions.Add(new ActionItem() { Title = "مدیریت نقش", Action = "UserRole", Controller = "Security" });
+            usersInfo.Actions.Add(new ActionItem() { Title = "حذف", Action = "DeleteRole", Controller = "Security" });
+
+            return View(usersInfo);
+        }
+
+
+        [HttpGet]
         public async Task<IActionResult> Roles()
         {
             var rolesInfo = new RoleDTO();
@@ -91,6 +107,66 @@ namespace CheckList2.Controllers
 
 
             return RedirectToAction("index", "home");
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> UserRole(long Id)
+        {
+            var res = new UserRoleDTO();
+
+            res.Roles.AddRange(await _context._role.GetAllDTOAsync());
+            res.UserId = Id;
+
+            var user = await _context._user.GetByIdAsync(Id);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "کاربری پیدا نشد");
+                return View(user);
+            }
+
+            var userRoleId = await _context._userRole.GetAllRolesIdByUserIDAsync(Id);
+
+            foreach (var item in res.Roles)
+            {
+                if (userRoleId.Any(r => r == item.Id))
+                    item.IsSelected = true;
+            }
+
+            ViewBag.UserTitle = user.Username;
+
+            return View(res);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UserRole(UserRoleDTO model)
+        {
+            var user = await _context._user.GetByIdAsync(model.UserId);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "کاربری پیدا نشد");
+                return View(model);
+            }
+
+            if (await _context._userRole.DeleteRolesByUserIdAsync(model.UserId))
+            {
+                var newUserRoles = new UserRoleDTO();
+                foreach (var item in model.Roles)
+                {
+                    if (item.IsSelected)
+                        newUserRoles.Roles.Add(item);
+                }
+                newUserRoles.UserId = model.UserId;
+
+                if (await _context._userRole.InsertUserRoleDTOAsync(newUserRoles))
+                {
+                    _context.Complete();
+                    return RedirectToAction("Users", "Security");
+                }
+            }
+
+            return View(model);
         }
 
 

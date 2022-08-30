@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Domain.DTO.Security;
+using Domain.Entities;
 using Domain.Interfaces;
 using EFCoreDAL.Context;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,12 @@ namespace EFCoreDAL.Repositories
         public UserRepository(ApplicationContext context) : base(context)
         {
             _context = context;
+        }
+
+        public async Task<IEnumerable<UserInfoDTO>> GetAllDTOAsync()
+        {
+            return await _context.Users.Select(r => new UserInfoDTO() 
+            { Id = r.Id, IsAdmin = r.IsAdmin, Username = r.Username }).ToListAsync();
         }
 
         public async Task<UserDomain> GetByUsernameAsync(string username)
