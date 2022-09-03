@@ -21,6 +21,20 @@ namespace CoreServices
             public const string Security_UserRole_HTTPGet = "C936E5CA-474F-4935-902A-FECA70191835";
             public const string Security_UserRole_HTTPPost = "CBDE4094-DFA1-43CB-9E29-816D3715DB4D";
             #endregion
+
+            #region Home
+            public const string Home_Index_HTTPGet = "8CE052DD-6468-4588-B103-601D712302D9";
+            public const string Home_UpdatePerson_HTTPGet = "9F21C501-A5DB-4C29-A6F2-245629F1BE18";
+            public const string Home_UpdatePerson_HTTPPost = "7DEDAF33-459B-4A04-944C-8F7CD7648B34";
+            #endregion
+
+            #region Account
+            public const string Account_Login_HTTPGet = "0E523CD4-69A4-4F77-A0E4-1B6DCEBC4AF1";
+            public const string Account_Login_HTTPPost = "1527E7F5-37EA-4718-8AD4-1C4A7A15CC2C";
+            public const string Account_Logout_HTTPGet = "96B2D144-C865-4140-AF80-0A4328EECF91";
+            #endregion
+
+
         }
 
         public static List<KeyValuePair<string, string>> GetPermisions()
