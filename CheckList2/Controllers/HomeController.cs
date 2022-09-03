@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Domain.Model;
 using Microsoft.AspNetCore.Authorization;
+using CoreServices;
 
 namespace CheckList2.Controllers
 {
@@ -20,6 +21,9 @@ namespace CheckList2.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+
+            await PermisionManager.SetPermisions(_context);
+
             var res = new PersonDTO();
             res.PersonInfos.AddRange(await _context._person.GetAllDTOAsync());
 

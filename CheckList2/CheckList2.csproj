@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CoreServices\CoreServices.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\EFCoreDAL\EFCoreDAL.csproj" />
   </ItemGroup>

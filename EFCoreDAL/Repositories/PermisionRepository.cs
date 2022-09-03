@@ -21,6 +21,23 @@ namespace EFCoreDAL.Repositories
             _context = context;
         }
 
+        public async Task<bool> AddRangeAsync(IEnumerable<PermisionDomain> list)
+        {
+            try
+            {
+                if (list == null)
+                    return true;
+
+                await _context.Permisions.AddRangeAsync(list);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public async Task<IEnumerable<PermisionInfoDTO>> GetAllDTOAsync()
         {
             return await _context.Permisions.Select(r => new PermisionInfoDTO() { Id = r.Id, Title = r.Title, Value = r.Value }).ToListAsync();

@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckList2", "CheckList2\CheckList2.csproj", "{92F895A7-8FA9-464F-83E5-82A16DA4DA8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckList2", "CheckList2\CheckList2.csproj", "{92F895A7-8FA9-464F-83E5-82A16DA4DA8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{D2D2DF94-9686-457F-8A2A-CFBD5356DB3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{D2D2DF94-9686-457F-8A2A-CFBD5356DB3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreDAL", "EFCoreDAL\EFCoreDAL.csproj", "{A6F10A20-5D22-4792-851A-38EBCA9CEF97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreDAL", "EFCoreDAL\EFCoreDAL.csproj", "{A6F10A20-5D22-4792-851A-38EBCA9CEF97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreServices", "CoreServices\CoreServices.csproj", "{40CCBF39-99D9-4B63-959D-5C8B55E39B77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{A6F10A20-5D22-4792-851A-38EBCA9CEF97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6F10A20-5D22-4792-851A-38EBCA9CEF97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6F10A20-5D22-4792-851A-38EBCA9CEF97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40CCBF39-99D9-4B63-959D-5C8B55E39B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40CCBF39-99D9-4B63-959D-5C8B55E39B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40CCBF39-99D9-4B63-959D-5C8B55E39B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40CCBF39-99D9-4B63-959D-5C8B55E39B77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
