@@ -1,12 +1,16 @@
-﻿using Domain.DTO.Security;
+﻿using CheckList2.Filters;
+using Domain.DTO.Security;
 using Domain.Interfaces;
 using Domain.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreServices;
 
 namespace CheckList2.Controllers
 {
+    [Authorize]
     public class SecurityController : Controller
     {
         private readonly IUnitOfWork _context;
@@ -16,6 +20,7 @@ namespace CheckList2.Controllers
             _context = context;
         }
 
+        [CustomAuthorization(PermisionManager.Permisions.Security_Users_HTTPGet, "")]
         [HttpGet]
         public async Task<IActionResult> Users()
         {

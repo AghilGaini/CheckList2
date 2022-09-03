@@ -52,6 +52,7 @@ namespace CheckList2.Controllers
             }
 
             var claims = new List<Claim>();
+            claims.Add(new Claim(ClaimTypes.Name, model.Username));
             claims.Add(new Claim("Username", model.Username));
             claims.Add(new Claim("Id", user.Id.ToString()));
 

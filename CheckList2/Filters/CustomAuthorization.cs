@@ -92,8 +92,10 @@ namespace CheckList2.Filters
                 return;
 
             if (!permisions.Any(r => r.Value == _permision))
+            {
                 context.Result = new ForbidResult();
-
+                return;
+            }
 
             if (_roles.Trim(',') != string.Empty)
             {
@@ -104,7 +106,7 @@ namespace CheckList2.Filters
                     if (!roles.Any(r => r.Title.ToLower() == item.ToLower()))
                     {
                         context.Result = new ForbidResult();
-                        break;
+                        return;
                     }
                 }
             }
