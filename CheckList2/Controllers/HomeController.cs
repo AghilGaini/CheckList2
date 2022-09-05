@@ -22,8 +22,6 @@ namespace CheckList2.Controllers
         public async Task<IActionResult> Index()
         {
 
-            await PermisionManager.SetPermisions(_context);
-
             var res = new PersonDTO();
             res.PersonInfos.AddRange(await _context._person.GetAllDTOAsync());
 

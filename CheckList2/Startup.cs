@@ -1,3 +1,4 @@
+using CheckList2.Services;
 using Domain.Interfaces;
 using EFCoreDAL.Context;
 using EFCoreDAL.Repositories;
@@ -36,6 +37,9 @@ namespace CheckList2
                 options.LoginPath = "/Account/Login";
                 options.AccessDeniedPath = "/Account/AccessDenied";
             });
+
+
+            services.AddHostedService<StartupService>();
 
         }
 
