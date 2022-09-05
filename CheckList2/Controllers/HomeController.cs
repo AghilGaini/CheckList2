@@ -78,5 +78,11 @@ namespace CheckList2.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult Map()
+        {
+            return View();
+        }
+
     }
 }
