@@ -12,10 +12,15 @@ namespace CheckList2.SignalR
         {
             clientsNumber++;
             if (clientsNumber % 2 == 0)
+            {
                 await Groups.AddToGroupAsync(Context.ConnectionId, "Even");
+                await SendTestMessageToEvenGroup();
+            }
             else
+            {
                 await Groups.AddToGroupAsync(Context.ConnectionId, "Odd");
-
+                await SendTestMessageToOddGroup();
+            }
         }
 
         public async Task SendTestMessage(string msg)
@@ -23,6 +28,33 @@ namespace CheckList2.SignalR
             try
             {
                 await Clients.All.SendAsync("RecieveRequestTest", msg);
+            }
+            catch (System.Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task SendTestMessageToOddGroup()
+        {
+            try
+            {
+                string msg = "msg from odd";
+                await Clients.Group("Odd").SendAsync("RecieveOddMsg", msg);
+            }
+            catch (System.Exception ex)
+            {
+
+                throw;
+            }
+        }
+        public async Task SendTestMessageToEvenGroup()
+        {
+            try
+            {
+                string msg = "msg from Even";
+                await Clients.Group("Odd").SendAsync("RecieveEvenMsg", msg);
             }
             catch (System.Exception ex)
             {
