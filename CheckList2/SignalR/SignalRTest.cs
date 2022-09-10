@@ -31,8 +31,7 @@ namespace CheckList2.SignalR
             }
             catch (System.Exception ex)
             {
-
-                throw;
+                await Clients.Caller.SendAsync("Notification", ex.Message);
             }
         }
 
@@ -45,10 +44,10 @@ namespace CheckList2.SignalR
             }
             catch (System.Exception ex)
             {
-
-                throw;
+                await Clients.Caller.SendAsync("Notification", ex.Message);
             }
         }
+
         public async Task SendTestMessageToEvenGroup()
         {
             try
@@ -58,8 +57,7 @@ namespace CheckList2.SignalR
             }
             catch (System.Exception ex)
             {
-
-                throw;
+                await Clients.Caller.SendAsync("Notification", ex.Message);
             }
         }
     }
