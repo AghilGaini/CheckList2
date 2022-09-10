@@ -1,4 +1,5 @@
 using CheckList2.Services;
+using CheckList2.SignalR;
 using Domain.Interfaces;
 using EFCoreDAL.Context;
 using EFCoreDAL.Repositories;
@@ -41,6 +42,8 @@ namespace CheckList2
 
             services.AddHostedService<StartupService>();
 
+            services.AddSignalR();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -52,16 +55,20 @@ namespace CheckList2
 
             app.UseStaticFiles();
 
+            app.UseRouting();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseRouting();
             app.UseMvc(routes =>
             {
                 routes.MapRoute("Default", "{Controller=Home}/{Action=Index}/{id?}");
             });
 
-
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<SignalRTest>("/MySignalRTest");
+            });
 
             //app.UseEndpoints(endpoints =>
             //{

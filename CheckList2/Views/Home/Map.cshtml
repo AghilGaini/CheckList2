@@ -11,6 +11,7 @@
         integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
         crossorigin=""></script>
 
+<script src="~/lib/microsoft-signalr/signalr.js"></script>
 
 <style>
     #map {
@@ -25,6 +26,15 @@
 
 
 <script type="text/javascript">
+
+
+    var connection = new signalR.HubConnectionBuilder().withUrl("/MySignalRTest").build();
+    connection.start().then(function() {
+            console.log("Signalr conected");
+        }).catch(function(err) {
+            return console.error(err.toString());
+        });
+
 
     var currentLat = 35.78023853564178;
     var currentLng = 51.46740881600891;
